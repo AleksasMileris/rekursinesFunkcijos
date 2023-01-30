@@ -1,4 +1,15 @@
 <?php
+
+        //LOGINAS
+session_start();
+require_once "checking.php";
+
+
+
+//------------------------------------------------------------------------------------------
+
+
+
         // direktorija
         $d = $_GET['nuoroda'];
 
@@ -76,7 +87,7 @@ if(isset($_POST['newFolder'])  && ($_POST['newFolder'] != "")){
                                 if(is_dir($nuorodosKelias."/".$nuorodosElementas)){
 
                                 //isskleistiNuoroda($nuorodosKelias."/".$nuorodosElementas);
-                                    echo  "<td class='col-md-1'><img src='./img/folder.png' width='40'></td>";
+                                    echo  "<td class='col-md-1'><img src='./img/folder.png' alt='folderIMG' width='40'></td>";
                                     echo "<td>";
                                     echo "<a class='text-decoration-none text-info'  href='?nuoroda=$nuorodosKelias/$nuorodosElementas' >$nuorodosElementas</a>";
                                     echo "</td>";
@@ -112,15 +123,11 @@ if(isset($_POST['newFolder'])  && ($_POST['newFolder'] != "")){
                                             //             |
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-                                 if($nuorodosKelias."/".$nuorodosElementas){
-                                    echo "<td>" ;
+                                echo "<td>" ;
+                                if($nuorodosKelias."/".$nuorodosElementas){
                                     echo  (filesize($nuorodosKelias."/".$nuorodosElementas))." B"."/".(filesize($nuorodosKelias."/".$nuorodosElementas) / 1000)." KB";
-                                    echo "</td>" ;
-                                }else{
-                                    echo "<td>" ;
-                                    echo " ";
-                                    echo "</td>" ;
                                 }
+                                echo "</td>" ;
 //-----------------------------------------------------------------------------------------------------------------------------------
                                 // Failo Dydis          /|\
                               //                       / | \
@@ -236,10 +243,12 @@ function skaiciuojaFailus($nuorodosKelias){
 </head>
 <body>
 
+<div class="container mt-5 d-flex justify-content-end">
+    <a href="login.php?logout=true" class=" btn btn-danger">Atsijungti</a>
 
+</div>
 
         <div class="container font-monospace">
-
 
 
 
